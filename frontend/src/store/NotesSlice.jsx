@@ -4,9 +4,9 @@ const noteSlice = createSlice({
   name: "notes",
   initialState: {
     allnotes: [
-      { id: 1, note: "This is a sample note" },
-      { id: 2, note: "This is another sample note" },
-      { id: 3, note: "This is a third sample note" },
+      // { id: 1, note: "This is a sample note" },
+      // { id: 2, note: "This is another sample note" },
+      // { id: 3, note: "This is a third sample note" },
     ],
   },
   reducers: {

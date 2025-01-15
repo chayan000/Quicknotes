@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addNote } from '../store/NotesSlice'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const AddNote = () => {
  const dispatch = useDispatch()
+ const navigate = useNavigate()
  const [myNote, setMyNote] = useState('')
 //  const [newId,setId] = useState(0)
  const clickFun = () => {
@@ -17,6 +18,7 @@ const AddNote = () => {
   );
   alert("Note added successfully");
   setMyNote(""); // Clear the input field
+  navigate("/");
 };
   return (
     <div>

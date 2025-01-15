@@ -8,10 +8,10 @@ const AllNotes = () => {
   const showNotes = useSelector((store) => store.notes.allnotes);
 
   const deleteNoteHandler = (id, e) => {
-    e.stopPropagation(); // Prevent the Link click event from firing
-    dispatch(deleteNote(id)); // Dispatch delete note action with correct id
+    e.preventDefault(); // Prevent the Link navigation
+    e.stopPropagation(); // Stop event propagation
+    dispatch(deleteNote(id));
   };
-
   return (
     <div>
       <Link to={"/addNote"} className="float-right bg-green-500 p-2 rounded-lg mr-4 font-medium">
@@ -19,16 +19,16 @@ const AllNotes = () => {
       </Link>
       <div className="flex h-[500px] gap-3 p-5 flex-wrap">
         {showNotes.map((note) => (
-          <div
-            key={note.id}
-            className="flex flex-col justify-between p-2 items-center w-[300px] h-[200px] bg-slate-700 overflow-hidden"
+          <Link to={"/note/" + note.id}
+          key={note.id}
+          className="flex flex-col justify-between p-2 items-center w-[300px] h-[200px] bg-slate-900 overflow-hidden rounded-lg shadow-lg shadow-black"
           >
-            <Link
-              to={"/note/" + note.id}
+            <div
+              // to={"/note/" + note.id}
               className="text-lg font-medium mb-4 text-center block"
             >
               {note.note}
-            </Link>
+            </div>
             <div>
               <button
                 className="bg-red-500 p-2 rounded-lg m-2"
@@ -36,9 +36,9 @@ const AllNotes = () => {
               >
                 Delete
               </button>
-              <button className="bg-blue-500 p-2 rounded-lg m-2">Edit</button>
+              <Link to={"/editNote/"+note.id} className="bg-blue-500 p-2 rounded-lg m-2">Edit</Link>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
